@@ -5,9 +5,10 @@ const morgan = require('morgan');
 const app = express();
 const router = require('./router');
 const mongoose = require('mongoose');
+const config = require('./config.js');
 
 //DB setup
-mongoose.connect('mongodb://localhost/auth');
+mongoose.connect('mongodb://localhost/mansikka');
 mongoose.connection.on('connected', function () {
     console.log('connected');
 });

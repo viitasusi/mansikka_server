@@ -4,8 +4,20 @@ const bcrypt = require('bcrypt-nodejs');
 
 //Define model
 const userSchema = new Schema({
+    firstName: { type: String, lowercase: true },
+    lastName: { type: String, lowercase: true },
     email: { type: String, unique: true, lowercase: true },
-    password: String
+    password: String,
+    phone: String,
+    farm: { type: String, lowercase: true },
+    street: { type: String, lowercase: true },
+    zip: String, 
+    city: { type: String, lowercase: true },
+    country: { type: String, lowercase: true },
+    lng: Number,
+    lat: Number,
+    strawberry: Boolean,
+    blueberry: Boolean
 });
 
 //On save hook, ecrypt pw

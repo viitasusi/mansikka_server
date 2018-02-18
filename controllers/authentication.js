@@ -14,6 +14,17 @@ exports.signin = function(req, res, next) {
 exports.signup = function(req, res, next) {
     const email = req.body.email;
     const password = req.body.password;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const phone = req.body.phone;
+    const farm = req.body.farm;
+    const street = req.body.street;
+    const zip = req.body.zip;
+    const city = req.body.city;
+    const country = req.body.country;
+    const strawberry = req.body.strawberry;
+    const blueberry = req.body.blueberry;
+
 
     if (!email || !password) {
         return res.status(422).send({ error: 'You must provide both email and password' });
@@ -29,7 +40,17 @@ exports.signup = function(req, res, next) {
 
         const user = new User({
             email: email,
-            password: password
+            password: password,
+            firstName: firstName,
+            lastName: lastName,
+            phone: phone,
+            farm: farm,
+            street: street,
+            zip: zip, 
+            city: city,
+            country: country,
+            strawberry: strawberry,
+            blueberry: blueberry
         });
 
         user.save(function(err) {
