@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt-nodejs');
+const Farm = require('./farm');
 
 //Define model
 const userSchema = new Schema({
@@ -9,15 +10,7 @@ const userSchema = new Schema({
     email: { type: String, unique: true, lowercase: true },
     password: String,
     phone: String,
-    farm: { type: String, lowercase: true },
-    street: { type: String, lowercase: true },
-    zip: String, 
-    city: { type: String, lowercase: true },
-    country: { type: String, lowercase: true },
-    lng: Number,
-    lat: Number,
-    strawberry: Boolean,
-    blueberry: Boolean
+    farm: Farm.schema
 });
 
 //On save hook, ecrypt pw
