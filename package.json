@@ -1,7 +1,7 @@
 {
-  "name": "server",
+  "name": "mansikka_server",
   "version": "1.0.0",
-  "description": "",
+  "description": "API server for reading/writing/manipulating farm & user data",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
