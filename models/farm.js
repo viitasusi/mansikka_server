@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const NodeGeocoder = require('node-geocoder');
 const config = require('../config');
+const Products = require('./products');
 
 const farmSchema = new Schema({
     name: { type: String, lowercase: true },
@@ -11,8 +12,7 @@ const farmSchema = new Schema({
     country: { type: String, lowercase: true },
     lng: Number,
     lat: Number,
-    strawberry: Boolean,
-    blueberry: Boolean
+    products: Products.schema
 });
 
 //Find longitude & latitude

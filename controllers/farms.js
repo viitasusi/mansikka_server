@@ -1,5 +1,6 @@
 const Farm = require('../models/farm');
 const User = require('../models/user');
+const Products = require('../models/products');
 const config = require('../config.js');
 
 
@@ -23,13 +24,12 @@ exports.saveFarm = function(req, res, next) {
         country: req.body.country,
         lng: req.body.lng,
         lat: req.body.lat,
-        strawberry: req.body.strawberry,
-        blueberry: req.body.blueberry
+        products: req.body.products
     });
 
     user.save(function(err) {
         if(err) { return next(err); }
 
-        res.json({ token: tokenForUser(user) });
+        res.json({ saved: 'farm saved' });
     });
 }

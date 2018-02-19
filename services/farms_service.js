@@ -1,3 +1,0 @@
-const farmsList = function(farms) {
-    
-}
