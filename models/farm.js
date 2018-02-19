@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const NodeGeocoder = require('node-geocoder');
+const config = require('../config');
 
-//Define model
 const farmSchema = new Schema({
     name: { type: String, lowercase: true },
     street: { type: String, lowercase: true },
@@ -17,23 +17,23 @@ const farmSchema = new Schema({
 
 //Find longitude & latitude
 farmSchema.pre('save', function(next) {
-    const geocoder = NodeGeocoder({ provider: 'google' });
+    const geocoder = NodeGeocoder({ provider: 'google', apiKey: config.googleApiKey });
     const farm = this;
     const address = farm.street + '' + farm.zip + '' + farm.city;
 
     geocoder.geocode(address, function(err, res) {
         if(err) { return next(err); }
-        console.log(res);
+        console.log(res[0].longitude);
 
-        farm.lng = res.longitude;
-        farm.lat = res.latitude;
+        farm.lng = res[0].longitude;
+        farm.lat = res[0].latitude;
+
+        console.log(farm.lng);
         next();
       });
 });
 
 
-//Create the model class
 const ModelClass = mongoose.model('farm', farmSchema);
 
-//Export the model
 module.exports = ModelClass;

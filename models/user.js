@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt-nodejs');
 const Farm = require('./farm');
 
-//Define model
 const userSchema = new Schema({
     firstName: { type: String, lowercase: true },
     lastName: { type: String, lowercase: true },
@@ -37,8 +36,6 @@ userSchema.methods.comparePassword = function(candidatePassword, callback) {
     });
 }
 
-//Create the model class
 const ModelClass = mongoose.model('user', userSchema);
 
-//Export the model
 module.exports = ModelClass;
