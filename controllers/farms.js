@@ -3,7 +3,6 @@ const User = require('../models/user');
 const Products = require('../models/products');
 const config = require('../config.js');
 
-
 exports.getFarms = function(req, res, next) {
     User.find({}, 'farm', function(err, farms) {
         if(err) {
@@ -13,7 +12,6 @@ exports.getFarms = function(req, res, next) {
         res.send(farms);
     });
 }
-
 
 exports.saveFarm = function(req, res, next) {
     const farm = new Farm({
