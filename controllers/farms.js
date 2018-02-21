@@ -8,10 +8,20 @@ exports.getFarms = function(req, res, next) {
         if(err) {
             return next(err);
         }
-        
-        res.send(farms);
+
+        const farmsFlat = [];
+
+        //TEMP: cleanup the farms array
+        farms.forEach(function(farm) {
+            farmsFlat.push(JSON.parse(JSON.stringify(farm.farm).split('"_id":').join('"id":')));
+            //console.log(farm.farm)
+        });
+        console.log(farmsFlat);
+        res.send(farmsFlat);
     });
 }
+
+
 
 exports.saveFarm = function(req, res, next) {
     const farm = new Farm({
